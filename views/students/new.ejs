@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">New Registration</h1>
+    <div class="col-6 offset-3">
+        <form action="/students/register" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" placeholder="Enter your name" name="student[name]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div  class=mb-3>
+                <label class="form-label" for="regno">Registration Number</label>
+                <input class="form-control" type="text" id="regno" placeholder="Enter your registration number" name="student[regNo]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div  class=mb-3>
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your VJTI e-mail ID" name="student[email]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div  class=mb-3>
+                <label class="form-label" for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" name="student[password]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="contactNo">Contact Number</label>
+                <input class="form-control" type="text" id="contactNo" placeholder="Enter your contact number" name="student[contactNo]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div  class=mb-3>
+                <label class="form-label" for="gender">Gender</label>
+                <input class="form-control" type="text" id="gender" placeholder="Enter your gender" name="student[gender]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="year">Year</label>
+                <input class="form-control" type="text" id="year" placeholder="Enter your year of study" name="student[year]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Deposit Amount</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">Rs</span>
+                    <input type="number" class="form-control" id="price" placeholder="Enter your deposit amount" aria-label="Price" aria-describedby="price-label" name="student[depositAmount]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                  </div>
+            </div>
+            <div class="mb-3">
+            <button class="btn btn-success">Register</button>
+            </div>
+        </form>
+        <footer>
+            <a href="/">Back </a>
+        </footer>
+    </div>
+</div>

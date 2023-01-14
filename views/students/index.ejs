@@ -1,0 +1,15 @@
+
+        <% layout('layouts/boilerplate')%>
+        <script type="text/javascript" src="JsBarcode.all.min.js"></script>
+        <div class="row">
+            <div class="col-6">
+                   <% for(let st of students ){%>
+             <div class="card mb-3 "">
+                 <div class="card-body">
+                   <h2 class="card-title"><%=student.name%></h2>
+                   <h5 class="card-text"><%=student.email%></h5> 
+                   <h5 class="card-text"><%=student.contactNo%></h5> 
+                   <h5 class="card-text"><%=student.depositAmount%></h5> 
+                   <p class="card-text"><%=student.year%></p>
+                   <a class="btn btn-primary" href="/students/<%=st._id%>">OPEN PROFILE</a>
+                   </div>

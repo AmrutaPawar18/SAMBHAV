@@ -1,0 +1,61 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">Guest Registration</h1>
+    <div class="col-6 offset-3">
+        <form action="/guest/register" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" placeholder="Enter your name" name="guest[name]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div  class=mb-3>
+                <label class="form-label" for="regno">Registration Number</label>
+                <input class="form-control" type="text" id="regno" placeholder="Enter your registration number" name="guest[regNo]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div  class=mb-3>
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your VJTI e-mail ID" name="guest[email]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="contactNo">Contact Number</label>
+                <input class="form-control" type="text" id="contactNo" placeholder="Enter your contact number" name="gues
+                t[contactNo]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Payment</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">Rs</span>
+                    <input type="number" class="form-control" id="price" placeholder="Enter your payment amount" aria-label="Price" aria-describedby="price-label" name="student[depositAmount]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                  </div>
+            </div>
+            <div class="form-file">
+                <input type="file" class="form-file-input" id="image" name="image" multiple>
+                <label class="form-file-label" for="image">
+                    <span class="form-file-text">Choose file</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+            <!-- <input typr="image" name="pay" id="" multiple> -->
+            <div class="mb-3">
+            <button class="btn btn-success">Register</button>
+            </div>
+        </form>
+        <footer>
+            <a href="/">Back </a>
+        </footer>
+    </div>
+</div>
