@@ -1,357 +1,57 @@
+<% layout('layouts/userBoilerplate') %>
 <style>
-*{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
- }
-
-.banner{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(background.jpg);
-    background-size: cover;
-    background-position: center;
-    display:flex;
-}
-
-.banner1 .english{
-    position:absolute;
-    right: 20px;
-    color: white;
-    padding-left:10px;
-    text-align: left;
-}
-
-.banner .marathi{
-    position:absolute;
-    right: 2px;
-    padding-left:10px;
-    text-align: right;
-}
-
-.banner .img{
-    float:left;
-    width:50px;
-}
-.navbar{
-    width: 85%;
-    margin: auto;
-    padding: 35px 0;
-    display: flex;
-    align-items: right;
-    justify-content: space-between;
-}
-.logo{
-    width: 75px;
-    color: #fff;
-    cursor: pointer;
-    align-items: left;
-}
-.english{
-    text-align: left;
-    color: #fff;
-    position: absolute;
-    left:70px;
-}
-
-.marathi{
-    text-align: right;
-    color: #fff;
-    margin: 0 20px;
-}
-
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    margin: 10px 20px;
-    position: relative;
-}
-.navbar ul li a{
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-}
-.navbar ul li::after{
-    content: '';
-    height: 3px;
-    width: 0;
-    background: #009688;
-    position: absolute;
-    right:10%;
-    bottom: -10px;
-    transition: 0.5s;
-}
-.navbar ul li:hover::after{
-    width: 100%;
-
-}
-.content{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: #fff;
-}
-.content h1{
-    font-size: 70px;
-    margin-top: 80px;
-}
-.content p{
-    margin: 20px auto;
-    font-weight: 100;
-    line-height: 25px;
-
-}
-button{
-    width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid #009688;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-span{
-    background: #009688;
-    height: 100%;
-    width: 100%;
-    border-radius: 25px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.5s;
-}
-
-button:hover span{
-    width: 100%;
-}
-
-button:hover{
-    border: none;
-}
-
-.btn{
-        width: 200px;
-        padding: 15px 0;
-        text-align: center;
-        margin: 20px 10px;
-        border-radius: 25px;
-        font-weight: bold;
-        border: 2px solid #009688;
-        background: transparent;
-        color: #fff;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
+    .content{
+        background-image: url("https://mitsjadan.ac.in/images/hostel&mess/mess1.jpg");
+        background-repeat: no-repeat;
+        background-size: 900px 200px;
+        margin-left: 100px;
+        margin-top: 10px;
     }
+    .welcome{
+        background: rgba(255, 255, 255, 0.4);
+        width: 900px;
+        height: 200px;
+    }
+    .message{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 36px;
+        margin-left: 90px;
+    }
+    .card{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
 
-
-.banner1{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(food.jpg);
-    background-size: cover;
-    background-position: center;
-    display:flex;
-}
-
-.banner1 .english{
-    position:absolute;
-    right: 1040px;
-    padding-left:10px;
-    color:white;
-    text-align: left;
-}
-
-.banner1 .marathi{
-    position:absolute;
-    right: 2px;
-    padding-left:10px;
-    color:white;
-    text-align: right;
-}
-
-.banner1 .img{
-    float:left;
-}
-/* .navbar{
-    width: 85%;
-    margin: auto;
-    padding: 35px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
-.logo{
-    width: 75px;
-    color: #fff;
-    cursor: pointer;
-    align-items: left;
-}
-/* .english{
-    text-align: left;
-    color: #fff;
-}
-
-.marathi{
-    text-align: right;
-    color: #fff;
-    margin: 0 20px;
-} */
-
-.content1{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: white;
-}
-.content1 h1{
-    font-size: 70px;
-    margin-top: 80px;
-}
-.content1 p{
-    margin: 20px auto;
-    font-weight: 100;
-    line-height: 25px;
-
-}
-button{
-    width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid #009688;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-span{
-    background: #009688;
-    height: 100%;
-    width: 100%;
-    border-radius: 25px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.5s;
-}
-
-button:hover span{
-    width: 100%;
-}
-
-button:hover{
-    border: none;
-}
-
-.profile{
-    position: absolute;
-    right: 2%;
-    top: 12%;
-    width:25%
-}
-
-.logo2{
-    position: absolute;
-    width:25px;
-    height: 25px;
-    color: #fff;
-    cursor: pointer;
-    right:8%;
-    top: 8%;
-
-} 
-/* .profile ul li{
-    list-style: none;
-    display: inline-block;
-    margin:0 20px;
-    position: relative; */
-/* } */
-/* div .profile-text{
-    position:absolute;
-    left:50px;
-    top:200px;
-    font-size:20px;
-} */
-#img{
-    size:50px;
-}
+    }
+    .bi{
+        font-size: 18px;
+    }
 </style>
 
-
-<html>
-    <head>
-        <title>Student Home Page</title>
-        <link rel="stylesheet" href="css.css">
-    </head>
-    <body>
-        <header>
-        <div class="banner1">
-                    <div class="img">
-                        <img src="https://img.collegepravesh.com/2016/01/VJTI-Mumbai-Logo.png" class="logo">
-                    </div>
-                    <div class="english">
-                        <h3> <b>VJTI Mumbai</b></h3>
-                        <p>Veermata Jijabai Technological Institute</p>
-                        <p>Erstwhile - Victoria Jubilee Technical Institute (estd. 1887)</p>
-                    </div>
-                    <div class="marathi">
-                        <p>वीरमाता जिजाबाई टेक्नॉलॉजीकल इंस्टिट्यूट <br>
-                            मुंबई ४०००१९</p>
-                    </div>
-                </header>
-            <div class="navbar">
-                <ul>
-                    <li>
-                       
-                    </li>
-                    <!-- <li><a href="#">Login</a></li>
-                    <li><a href="#">Rules</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact Us</a></li> -->
-                </ul>
-            </div> 
-            <div class="profile">
-                <a class="profile-text" href="#">Profile</a>
-              <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdi3-9dIAH6OQgEiCKbLMdsiDkelJGdmOS7w&usqp=CAU">
-            </div>
-            <div class="content1">
-                <h1>Welcome! <br> VJTI Hostel Mess</h1>
-                <p>Choose</p>
-                <div>
-                    <button type="button"> <span></span> Add Guest
-                        <select name="button" id="membership">
-                            <option value="1" selected>0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="1">5</option>
-                          </select></button>
-                    <!-- <label class="btn" for="button">Add Guest</label> -->
-    
-                    <button type="button"> <span></span> History</button>
-                    <button type="button"> <span></span> Check Balance</button>
-                    <button type="button"> <span></span> Payment</button>
-                </div>
-            </div>
-
+<div class="content">
+    <div class="welcome">
+        <h3 class="message">WELCOME TO VJTI HOSTEL MESS PORTAL</h3>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3 class="card-title"><strong>View History</strong></h3>
+          <p class="card-text">See your monthly records</p>
+          <a href="/students/history" class="btn btn-primary"><i class="bi bi-clock-history"></i>  History</a>
         </div>
-    </body>
-</html>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3 class="card-title"><strong>Make Payment</strong></h3>
+          <p class="card-text">Pay your mess deposit fess here</p>
+          <a href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm" class="btn btn-primary"><i class="bi bi-wallet2"></i>  Payment</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+

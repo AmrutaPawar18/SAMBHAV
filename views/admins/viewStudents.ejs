@@ -1,0 +1,83 @@
+<% layout('layouts/adminBoilerplate') %>
+<style>
+    .wrapper {
+    margin-left:75%;
+    margin-top: 1%;  
+    }
+    #search-container {
+    margin: 0.5em 0;
+    }
+    #search-container input {
+    background-color: transparent;
+    width: 35vh;
+    height: 40px;
+    border-radius: 5px;
+    border-bottom: 2px solid #110f29;
+    padding: 0.7em 0.3em;
+    }
+    #search-container input:focus {
+    border-bottom-color: #6759ff;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: blue;
+    }
+</style>
+<br>
+<div>
+    <a href="/admin/home" class="btn btn-outline-primary"><i class="bi bi-house-fill"></i>  Home</a>
+</div>
+<br>
+<div class="wrapper">
+    <div id="search-container">
+        <input type="search" id="search-input" placeholder="Search using Registration Id" onkeyup="searchfun()">
+    </div>
+</div>
+<br>
+<div class="card mb-7">
+    <div class="card-header align-text-center">
+        <h4>ALL STUDENTS</h4>
+    </div>
+    <table class="table table-bordered" style="text-align: center; border-bottom: 1px solid black">
+        <thead>
+            <tr>
+              <th scope="col">Reg No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Contact No</th>
+              <th scope="col">Email</th>
+              <th scope="col">Deposit Amount</th>
+            </tr>
+        </thead>
+        <tbody id="AllStudents">
+                <% for (let student of students) { %>
+                    <tr class="tr">
+                        <td><%= student.regNo %></td>
+                        <td><a href="/admin/<%= student._id %>/profile" id="profile"><%= student.username %></a></td>
+                        <td><%= student.contactNo %></td>
+                        <td><%= student.email %></td>
+                        <td><%= student.depositAmount %></td>
+                    </tr>
+                    <% } %>
+        </tbody>
+    </table>
+</div>
+<script>
+    const searchfun=()=>{
+        let filter = document.getElementById('search-input').value.toUpperCase();
+        let Allstudents = document.getElementById('AllStudents');
+        let stud = Allstudents.getElementsByClassName('tr');
+        
+        for(var i=0; i<stud.length; i++){
+            let name = stud[i].firstElementChild.innerText;
+            if(name.toUpperCase().indexOf(filter)>-1){
+               stud[i].style.display="";
+            }else{
+              stud[i].style.display="none";
+            }
+        }
+    }
+</script>

@@ -1,0 +1,37 @@
+<style>
+  .navbar-brand{
+      font-size: 27px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  .navbar-text {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      right: 30px;
+  }
+  a{
+    text-decoration: none;
+  }
+  #profile {
+      font-size: 24px;
+  }
+  #name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+  }
+</style>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">VJTI HOSTEL MESS PORTAL</span>
+    <% if (currentUser) { %>
+      <div class="navbar-text dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="name">
+          <i class="bi bi-person-bounding-box" id="profile"></i>      <%= currentUser.username %>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/students/profile"><i class="bi bi-file-person-fill"></i>  View Profile</a></li>
+          <li><a class="dropdown-item" href="/students/logout"><i class="bi bi-box-arrow-right"></i>  Logout</a></li>
+        </ul>
+      </div>
+    <% } %>
+  </div>
+</nav>
+

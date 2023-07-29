@@ -2,13 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const RecordSchema = new Schema({
-    month: String,
-    amount: Number
-})
-
 const StudentSchema = new Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
@@ -39,13 +34,19 @@ const StudentSchema = new Schema({
         type: Number,
         required: true
     },
-    records: RecordSchema,
-    guests: {
-        type: Number
+    records: [{
+        month: { type: String },
+        amount: { type: Number }
+    }],
+    meals: {
+        type: Number,
+        default: 0
     },
-    monthlyTotal: Number
+    additionalCharges: {
+        type: Number,
+        default: 0
+    } 
 })
 
 StudentSchema.plugin(passportLocalMongoose);
-
 module.exports = mongoose.model('Student', StudentSchema);

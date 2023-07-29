@@ -1,0 +1,47 @@
+<% layout('layouts/adminBoilerplate') %>
+<style>
+    .bi {
+      width: 20px;
+      height: 20px;
+    }
+    #sidebar{
+        overflow: auto;
+        position: fixed;
+        left: 0px;
+        width: 280px;
+        height: 100%;
+    }
+    #img{
+      position: relative;
+      left: 280px;
+      height: 100%;
+      width: 800px;
+    }
+</style>
+  
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-dark" id="sidebar">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item"><a href="/admin/home" class="nav-link text-white" aria-current="page">
+        <i class="bi bi-house"></i> Home 
+      </a></li>
+      <li><a href="/admin/adminpage" class="nav-link text-white">
+        <i class="bi bi-journal-text"></i> Meal Time Dashboard 
+      </a></li>
+      <li><a href="/admin/viewStudents" class="nav-link text-white">
+        <i class="bi bi-person-circle"></i> View Students 
+      </a></li>
+      <li><a href="/admin/defaulters" class="nav-link text-white">
+        <i class="bi bi-person-fill-exclamation"></i> View Defaulters 
+      </a></li>
+      <li><a href="/admin/generateBill" class="nav-link text-white">
+        <i class="bi bi-receipt-cutoff"></i> Generate Bill
+      </a></li>
+      <li><a href="/admin/logout" class="nav-link text-white">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a></li>
+    </ul>
+</div>
+
+<div>
+  <img src="https://thumbs.dreamstime.com/b/admin-login-sign-made-wood-table-208335510.jpg" alt="" id="img">
+</div>

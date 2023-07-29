@@ -1,349 +1,105 @@
+<% layout('layouts/adminBoilerplate') %>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(food1.jpg);
-}
-
-.container {
-    max-width: 500px;
-    width: 100%;
-    position: absolute;
-    right: 200px;
-    background-color: #fff;
-    padding: 25px 30px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-}
-
-.container .title {
-    font-size: 25px;
-    font-weight: 500;
-    left: 30%;
-    position: relative;
-}
-
-.container .title::before {
-    content: "";
-    position: absolute;
-    left: 18%;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-
-.content form .user-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 20px 0 12px 0;
-}
-
-form .user-details .input-box {
-    margin-bottom: 15px;
-    width: 80%
-        /* width: calc(100% / 2 - 20px); */
-}
-
-form .input-box span.details {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-.user-details .input-box input {
-    height: 45px;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 15px;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-}
-
-.user-details .input-box input:focus,
-.user-details .input-box input:valid {
-    border-color: #9b59b6;
-}
-
-
-form .category {
-    display: flex;
-    width: 80%;
-    margin: 14px 0;
-    justify-content: space-between;
-}
-
-form .category label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-form .category label .dot {
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background: #d9d9d9;
-    border: 5px solid transparent;
-    transition: all 0.3s ease;
-}
-
-#dot-1:checked~.category label .one,
-#dot-2:checked~.category label .two,
-#dot-3:checked~.category label .three {
-    background: #9b59b6;
-    border-color: #d9d9d9;
-}
-
-form input[type="radio"] {
-    display: none;
-}
-
-form .button {
-    height: 45px;
-    margin: 35px 0
-}
-
-form .button input {
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-
-form .button input:hover {
-    /* transform: scale(0.99); */
-    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-}
-
-@media(max-width: 584px) {
-    .container {
-        max-width: 100%;
+    .wrapper {
+    margin-left:75%;
+    margin-top: 1%;  
     }
-
-    form .user-details .input-box {
-        margin-bottom: 15px;
-        width: 100%;
+    #search-container {
+    margin: 0.5em 0;
     }
-
-    form .category {
-        width: 100%;
-    }
-
-    .content form .user-details {
-        max-height: 300px;
-        overflow-y: scroll;
-    }
-
-    .user-details::-webkit-scrollbar {
-        width: 5px;
-    }
-}
-
-@media(max-width: 459px) {
-    .container .content .category {
-        flex-direction: column;
-    }
-}
-
-.container1 {
-    max-width: 500px;
-    width: 100%;
-    position: absolute;
-    right: 58%;
-    background-color: #fff;
-    padding: 230px 250px;
+    #search-container input {
+    background-color: transparent;
+    width: 35vh;
+    height: 40px;
     border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-}
-
-.container1 .title1 {
-    font-size: 25px;
-    font-weight: 500;
-    left: 38%;
-    top: 5%;
-    position: absolute;
-}
-
-/* .container1 .title::before {
-    content: "";
-    position: absolute;
-    left: 18%;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-} */
-
-header {
-    position: absolute;
-    top: 0px;
-}
-
-.banner {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(food1.jpg);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-}
-
-.banner .english {
-    position: absolute;
-    right: 875px;
-    color: white;
-    padding-left: 10px;
-    text-align: left;
-}
-
-.banner .marathi {
-    position: absolute;
-    right: 2px;
-    padding-left: 10px;
-    text-align: right;
-    color: white;
-}
-
-.banner .img {
-    float: left
-}
-
-.logo {
-    width: 75px;
-}
+    border-bottom: 2px solid #110f29;
+    padding: 0.7em 0.3em;
+    }
+    #search-container input:focus {
+    border-bottom-color: #6759ff;
+    }
 </style>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Home Page</title>
-</head>
-
-
-
-<body>
-    <header class="banner">
-        <div class="img">
-            <img src="https://img.collegepravesh.com/2016/01/VJTI-Mumbai-Logo.png" class="logo">
-        </div>.
-        <div class="english">
-            <h3> <b>VJTI Mumbai</b></h3>
-            <p>Veermata Jijabai Technological Institute</p>
-            <p>Erstwhile - Victoria Jubilee Technical Institute (estd. 1887)</p>
-        </div>
-        <div class="marathi">
-            <p>वीरमाता जिजाबाई टेक्नॉलॉजीकल इंस्टिट्यूट <br>
-                मुंबई ४०००१९</p>
-        </div>
-    </header>
-    <div class="container">
-        <div class="title">Student Details</div>
-        <div class="content">
-            <form action="#">
-                <div class="user-details">
-                    <div class="input-box">
-                        <span class="details">Full Name</span>
-                        <input type="text" placeholder="Name" required>
-                    </div>
-                    <!-- <div class="input-box">
-                        <span class="details">Username</span>
-                        <input type="text" placeholder="Enter your username" required>
-                    </div> -->
-                    <div class="input-box">
-                        <span class="details">Registration Id</span>
-                        <input type="text" placeholder="Reg Id" required>
-                    </div>
-                    <!-- <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input type="text" placeholder="Enter your number" required>
-                    </div> -->
-                    <div class="input-box">
-                        <span class="details">Number of Guests</span>
-                        <input type="text" placeholder="No." required>
-                    </div>
-                    <!-- <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input type="text" placeholder="Confirm your password" required>
-                    </div> -->
-                </div>
-                <div class="button">
-                    <input type="submit" value="Generate Bill">
-                </div>
-            </form>
+<br>
+<div>
+    <a href="/admin/home" class="btn btn-outline-primary"><i class="bi bi-house-fill"></i>  Home</a>
+</div>
+<br>
+<% if (students.length !== 0) { %>
+    <div class="wrapper">
+        <div id="search-container">
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Search"
+            onkeyup="searchfun()">
         </div>
     </div>
-    <div class="container1">
-        <script src="html5-qrcode.min.js"></script>
-<!-- <style>
-    .result {
-        background-color: green;
-        color: #fff;
-        padding: 20px;
-    }
-    .row {
-        display: flex;
-    }
-</style>
+<% } %>
+<br>
 
-
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="bi bi-person-add"></i>  Add Student
+</button>
+<br>
+<div class="modal fade position-absolute top-50 start-50 translate-middle" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Student</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/addStudent" method="post">
+            <div class="col-sm-10">
+                <input type="number" class="form-control" placeholder="Enter reg. number" id="regid" name="regid">
+            </div>                         
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary mb-3">Add</button>
+        </div>
+        </form> 
+      </div>
+    </div>
+  </div>
+<br>
+<% if (students.length === 0) { %>
+    <div style="text-align: center;">
+        <p style="font-family: 'Times New Roman', Times, serif; font-size: 45px;">NO STUDENTS IN MESS CURRENTLY</p>
+    </div>
+<% } %>
 <div class="row">
-    <div class="col">
-        <div style="width:500px;" id="reader"></div>
-    </div>
-    <div class="col" style="padding:30px;">
-        <h4>SCAN RESULT</h4>
-        <div id="result">Result Here</div>
-    </div>
-</div>  -->
+<% for(let s of students) { %>
+    <div class="col-6 mb-2">
+    <div class="card text-center" style="width: 500px;">            
+                <div class="card-body">
+                     <h4><strong><%= s.username %></strong></h4>
+                     <p><%= s.regNo %></p>
+                     <form action="/admin/<%= s._id %>/checkout" method="post">
+                        <label for="guests" style="float: left;">No.of Guests:<span></span></label>
+                        <input type="number" class="form-control" style="width: 60px; overflow: hidden;" id="guests" value=0 name="guests">  
+                        <label for="add" style="float: left;">Additional Charges:<span></span></label>      
+                        <input type="number" class="form-control" style="width: 60px; overflow: hidden;" id="add" value=0 name="additionalCharges">
+                        <button type="submit" class="btn btn-success">Checkout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% } %>
+</div>
 
-
-<script type="text/javascript">
-    function onScanSuccess(qrCodeMessage) {
-        document.getElementById('result').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
-    }
-
-    function onScanError(errorMessage) {
-        //handle scan error
-    }
-
-    var html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader", { fps: 10, qrbox: 250 });
-    html5QrcodeScanner.render(onScanSuccess, onScanError);
-
-</script>
-     <!-- <a href="scanner.ejs">Scanner</a> -->
+<script>
+    const searchfun=()=>{
+        let filter = document.getElementById('search-input').value.toUpperCase();
+        let Allstudents = document.getElementById('AllStudents');
+        let stud = Allstudents.getElementsByClassName('tr');
         
-    </div>
-
-</body>
-
-</html>
+        for(var i=0; i<stud.length; i++){
+            let name = stud[i].firstElementChild.innerText;
+            if(name.toUpperCase().indexOf(filter)>-1){
+               stud[i].style.display="";
+            }else{
+              stud[i].style.display="none";
+            }
+        }
+    }
+</script>

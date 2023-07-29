@@ -1,104 +1,102 @@
-<!-- <% layout('layouts/boilerplate')%>
-<div class="row">
-    <div class="col-6">
-        <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title"><%= student.name %></h5>
-              <p class="card-text"><%= student.regNo %></p>
+<% layout('layouts/userBoilerplate') %>
+
+<style>
+  .student-profile .card {
+    border-radius: 10px;
+  }
+  
+  .student-profile .card .card-header .profile_img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px auto;
+    border: 10px solid #ccc;
+    border-radius: 50%;
+  }
+  
+  .student-profile .card h3 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .student-profile .card p {
+    font-size: 16px;
+    color: #000;
+  }
+  
+  .student-profile .table th,
+  .student-profile .table td {
+    font-size: 14px;
+    padding: 5px 10px;
+    color: #000;
+  }
+  #profile {
+      height: 44px;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+  <br>
+  <div id="profile" class="card-header align-text-center">
+          <h2>STUDENT PROFILE</h2>
+  </div>
+  
+  <div>
+      <a href="/students/home" class="btn btn-outline-primary"><i class="bi bi-arrow-left-circle-fill"></i> Back</a>
+  </div>
+  
+  <div class="student-profile py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent text-center">
+                <h3><%= student.username %></h3>
+              </div>
+              <div class="card-body">
+                <p class="mb-0"><strong class="pr-1">Registration ID:</strong> <%= student.regNo %></p>
+                <p class="mb-0"><strong class="pr-1">Year: </strong><%= student.year %></p>
+                <p class="mb-0"><strong class="pr-1">Gender:</strong> <%= student.gender %></p>
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><%= student.email %></li>
-              <li class="list-group-item">$<%= student.contactNo %></li>
-            </ul>
-            <div class="card-body">
-              <a href="/campgrounds/<%=campground._id%>/edit" class="card-link btn btn-info">Edit</a> 
-              <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST" class="d-inline">
-                <button class="btn btn-danger">Delete</button>
-            </form>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
-          </div>  
-    </div>
-    <div class="col-6">
-        <h2>Leave a Review!</h2>
-        <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
-          <div class="mb-3">
-              <label class="form-label" for="rating">Rating</label>
-              <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating" required>
           </div>
-          <div class="mb-3">
-              <label class="form-label" for="body">Review</label>
-              <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
-              <div class="valid-feedback">
-                  Looks good!
+          <div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                  <tr>
+                    <th width="30%">Contact No:</th>
+                    <td width="2%">:</td>
+                    <td><%= student.contactNo %></td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Email</th>
+                    <td width="2%">:</td>
+                    <td><%= student.email %></td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Balance</th>
+                    <td width="2%">:</td>
+                    <td><%= student.depositAmount %></td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Current Month No. of Meals</th>
+                    <td width="2%">:</td>
+                    <td><%= student.meals %></td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Current Month Additional Charges</th>
+                    <td width="2%">:</td>
+                    <td><%= student.additionalCharges %></td>
+                  </tr>
+                </table>
               </div>
           </div>
-          <button class="btn btn-success">Submit Review</button>
-        </form>
-        <% for (let review of campground.reviews) { %>
-        <div class="mb-3 card">
-          <div class="card-body">
-              <h5 class="card-title">Rating: <%= review.rating %></h5>
-              <p class="card-text">Review: <%= review.body %></p>
-              <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                <button class="btn-sm btn btn-danger">Delete</button>
-              </form>
           </div>
         </div>
-        <% } %>
-    </div>
-</div>
-<!-- <h1><%= campground.title %></h1>
-<h2><%= campground.location %></h2>
-<img src="<%= campground.image%>" alt="">
-<p><%= campground.description %></p>
-<p>
-    <a href="/campgrounds/<%=campground._id%>/edit" class="card-link">Edit</a> 
-</p>
-<p>
-    <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST" class="card-link">
-        <button>Delete</button>
-    </form>
-</p> -->
-<footer>
-    <div class="mb-3">
-        <a href="/campgrounds"><button class="btn btn-primary">Back to All Campgrounds</button></a>
-    </div>
-    
-</footer>
- -->
-
-
-
-
-
-
-<% layout('layouts/boilerplate')%>
-<script type="text/javascript" src="JsBarcode.all.min.js"></script>
-<div class="row">
-  <div class="col-6">
-<div class="card mb-3 "">
-    <div class="card-body">
-      <h2 class="card-title"><%=student.name%></h2>
-      <h5 class="card-text"><%=student.email%></h5> 
-      <h5 class="card-text"><%=student.contactNo%></h5> 
-      <h5 class="card-text"><%=student.depositAmount%></h5> 
-      <p class="card-text"><%=student.year%></p>
-      <p> 
-        <input type="text" name="<%=student._id%>" id="txt_input">
-        <button id="btn_generate">Generate Barcode</button>
-        <br><br>
-        <svg id="barcode"></svg>
-        <script type="text/javascript">
-            document.getElementById("btn_generate").addEventListener('click', function () {
-                var text = document.getElementById("txt_input").value;
-                JsBarcode("#barcode", text);
-            });
-        </script>
-        </p>
       </div>
     </div>
-  </div>
-</div>
+    

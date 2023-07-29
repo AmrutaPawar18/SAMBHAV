@@ -1,8 +1,10 @@
 const mongoose =require('mongoose');
-const bcrypt = require('bcrypt');
+const passport = require('passport')
+const passportLocal = require('passport-local');
+const passportMongoose = require('passport-local-mongoose');
 
-const Adminsd=require('./admin_seeds');
-const Admin=require('../models/admin');
+const Adminsd = require('./admin_seeds');
+const Admin = require('../models/admin');
 
 const options = {
     autoIndex: false, // Don't build indexes
@@ -17,15 +19,13 @@ const options = {
 
   const seedDB = async()=>{
   await Admin.deleteMany({});
-  for(let i=0;i<2;i++){
-      let pword = Adminsd[i].password;
-      let hashPass = await bcrypt.hash(pword, 12);
-      const admin = new Admin({
-      email:`${Adminsd[i].email}`,
-      password: hashPass
-  });
-  await admin.save();
-}
+  for(let i=0;i<2;i++) {
+    username = Adminsd[i].username;
+    email = Adminsd[i].email,
+    password = Adminsd[i].password;
+    const user = new Admin({username, email});
+    await Admin.register(user, password);
+  }
 }
 
 seedDB();

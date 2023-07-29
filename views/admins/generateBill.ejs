@@ -1,0 +1,52 @@
+<% layout('layouts/adminBoilerplate') %>
+<style>
+  .box-form{
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 30px;
+    max-width: 800px;
+    translate: 21%;
+  }
+  #info{
+    translate: 40%;
+  }
+</style>
+<br>
+<div>
+    <a href="/admin/home" class="btn btn-outline-primary"><i class="bi bi-house-fill"></i>  Home</a>
+</div>
+<br>
+<h1 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Bill Processing</h1>
+<br>
+<div class="box-form">
+    <form action="/admin/calculate?_method=put" method="post" >
+      <label for="expense" class="col-form-label">Total Mess Expenditure</label>
+      <div class="mb-3 row">
+        <div class="col-sm-10">
+          <div class="input-group">
+          <span class="input-group-text" id="price-label"><i class="bi bi-currency-rupee"></i></span>
+          <input type="text" class="form-control" id="expense" name="expense">
+        </div>
+        </div>
+      </div>
+      <label for="number" class="col-form-label">Total Number of Meals Served</label>
+      <div class="mb-3 row">
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="number" value="<%= admin.meals %>" name="number">
+        </div>
+      </div>
+        <div class="col-auto text-center">
+          <button type="submit" class="btn btn-success mb-3">Confirm</button>
+        </div>
+    </form>
+</div>
+<br>
+<% if (permeal !== 0) { %>
+    <hr>
+    <div id="info">
+        <form action="/admin/generateBill?_method=put" method="post">
+            <h5>Per Meal Cost: <%= permeal %></h5><br>
+            <button class="btn btn-success">Generate Bill</button>
+        </form>
+    </div>
+<% } %>

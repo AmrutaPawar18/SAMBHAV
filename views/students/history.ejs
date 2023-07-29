@@ -1,0 +1,54 @@
+<% layout('layouts/userBoilerplate') %>
+<style>
+    .student-profile .card {
+  border-radius: 10px;
+}
+.student-profile .card .card-header {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+}
+    .student-profile .table th,
+    .student-profile .table td {
+    font-size: 14px;
+    padding: 5px 10px;
+    color: #000;
+    }
+    .student-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student-profile .card p {
+  font-size: 16px;
+  color: #000;
+}
+</style>
+<br>
+<div>
+  <a href="/students/home" class="btn btn-outline-primary"><i class="bi bi-house-fill"></i> Home</a>
+</div>
+<br>
+<div class="student-profile">
+<div class="card mb-5">
+    <h3 style="text-align: center;">Monthly Records</h3>
+        <table class="table table-bordered" style="text-align: center; border-bottom: 1px solid black">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i of student.records) { %>
+                <tr>
+                    <td><%= i.month %></td>
+                    <td><%= i.amount %></td>
+                </tr>
+                <% } %>
+            </tbody>
+</div>
+</div>

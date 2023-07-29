@@ -1,20 +1,17 @@
-if (process.env.NODE_ENV != "production") {
-    require('dotenv').config();
-}
-
-console.log(process.env.SECRET)
-console.log(process.env.API_KEY)
-
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const ejs = require('ejs');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const Joi = require('joi');
 const passport = require('passport');
 const passportLocal = require('passport-local');
 const passportMongoose = require('passport-local-mongoose');
+const nodemailer = require('nodemailer');
 
 const catchAsync = require('./utilities/catchAsync');
 const ExpressErrors = require('./utilities/expressErrors');
@@ -22,6 +19,8 @@ const ExpressErrors = require('./utilities/expressErrors');
 const Student = require('./models/students');
 const Admin = require('./models/admin');
 
+const studentRoutes = require('./routes/students');
+const adminRoutes = require('./routes/admin');
 
 const options = {
     autoIndex: false,
@@ -30,9 +29,6 @@ const options = {
     socketTimeoutMS: 45000,
     family: 4
 };
-
-const studentRoutes = require('./routes/students');
-const adminRoutes = require('./routes/admin');
 
 mongoose.connect('mongodb://localhost:27017/hostel-mess', options, () => {
     console.log("Connected to database")
@@ -62,14 +58,10 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new passportLocal(Student.authenticate()));
-passport.serializeUser(Student.serializeUser());
-passport.deserializeUser(Student.deserializeUser());
+app.use(bodyParser.urlencoded({extended : true}));
 
 app.use((req, res, next) => {
+    console.log(req.session)
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
@@ -78,6 +70,20 @@ app.use((req, res, next) => {
 app.use('/students', studentRoutes);
 app.use('/admin', adminRoutes);
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000');
+app.get('/', (req, res) => {
+    res.render('home');
+  })   
+
+app.all('*', (req, res, next) => {
+    next(new ExpressErrors('Page not found', 404));
+})
+
+app.use((err, req, res, next) => {
+    const { statusCode = 500} = err;
+    if (!err.message) err.message = "Something went wrong!";  
+    res.status(statusCode).render('error', {err});
+})
+
+app.listen(7018, () => {
+    console.log('Serving on port 7018');
 })

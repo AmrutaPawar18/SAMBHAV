@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+    <style>
+        .row {
+            margin-left: 250px;
+            margin-top: 90px;
+        }
+        .card{
+            height: 180px;
+            background: rgba(17, 25, 112, 0.6);
+        }
+        .card-body {
+            font-size: 45px;
+            text-align: center;
+            padding-top: 45px;
+            text-decoration: none; 
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            color: white;
+        }
+        .card-body:hover{
+            background: rgba(17, 25, 112, 1);
+            color: white;
+        }
+    </style>
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="/students/intermediate" style="color: white;">
+            <div class="card">
+                <div class="card-body">
+                    <p><span></span>Student</p>
+                </div>
+            </div>
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="/admin/login" style="color: white;">
+            <div class="card">
+                <div class="card-body">
+                    <p><span></span>Admin</p>
+                </div>
+            </div>
+        </a>
+        </div>        
+    </div>

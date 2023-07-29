@@ -1,0 +1,21 @@
+<style>
+    .navbar-brand{
+        font-size: 27px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .navbar-text {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .bi{
+        height: 30px;
+        width: 30px;
+    }
+</style>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">VJTI HOSTEL MESS PORTAL</span>
+      <% if (currentUser) { %>
+      <div class="navbar-text h5"><i class="bi bi-person-workspace"></i> <%= currentUser.username %></div>
+      <% } %>
+    </div>
+</nav>
